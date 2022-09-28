@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {useDropzone} from 'react-dropzone'
-import { Trash } from '../icons/icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Dropzone = (props) => {
     const [files, setFiles] = useState([]);
@@ -23,10 +24,9 @@ const Dropzone = (props) => {
 
     const acceptedFileItems = files.map(file => {
       const fileName = (file.path).replace(/\\/g, '/').split('/').pop();
-
       return (
         <li key={file.path}>
-          <span><p className='bold text-smallest'>{fileName}</p> <Trash onClick={() => setFiles([])}/></span>
+          <span><p className='bold text-smallest'>{fileName}</p> <FontAwesomeIcon icon={faTrash} onClick={() => setFiles([])}/></span>
           <div className="progress">
             <div className="progress-value"></div>
           </div>

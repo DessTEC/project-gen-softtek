@@ -20,96 +20,66 @@ class Input extends Component {
 
     render(){
         switch (this.props.type) {
-            case 'color':
-                return(
-                    <>
-                        <p className='non-bold'>{this.props.label} <input type={this.props.type} value={this.state.value ? this.props.value : '#FF6961' } onChange={this.handleValue} ref={this.props.innerRef}/></p>
-                    </>
-                );
             case 'file':
                 return(
                     <>
-                        <label htmlFor={this.props.name} className='file-label'>
-                            <div className={`input-wrapper ${this.props.className && this.props.className} ${this.props.size ? this.props.size : 'block'}`}>
-                                <p>{this.props.value}</p>
-                                <div className={`input-placeholder non-bold ${this.props.value.length > 0 && 'focused'}`}>
-                                    {this.props.label}
-                                </div>
-                            </div>
-                            <div className='button secondary'>
-                                <p className='text-smaller'>{this.props.buttonLabel}</p>
+                    <div className='mt-4 ml-4 mr-4 mb-1'>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" htmlFor={this.props.name}>
+                            <div className={`block text-gray-700 text-sm mb-2 ${this.state.value.length > 0 && 'font-bold'}`}>
+                                {this.props.label}
                             </div>
                         </label>
-                        {this.props.directory ?
-                            <input
+                        <input
                                 type={this.props.type}
                                 id={this.props.name}
-                                className='file-input'
-                                value={this.state.value}
+                                className="w-full text-sm text-grey-500 bg-gray-50 rounded-lg border border-gray-300
+                                file:mr-5 file:py-2 file:px-6
+                                file:border-0
+                                file:text-sm file:font-medium
+                                file:bg-blue-50 file:text-blue-700
+                                hover:file:cursor-pointer hover:file:bg-sky-900
+                                hover:file:text-white"
                                 onChange={this.props.handleFiles}
                                 ref={this.props.innerRef}
                                 accept={this.props.accept}
-                                directory=''
-                                webkitdirectory=''
                                 multiple=''
                             />
-                        :
-                            <input
-                                type={this.props.type}
-                                id={this.props.name}
-                                className='file-input'
-                                value={this.state.value}
-                                onChange={this.props.handleFiles}
-                                ref={this.props.innerRef}
-                                accept={this.props.accept}
-                                //directory=''
-                                //webkitdirectory=''
-                                multiple=''
-                            />
-                        }
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">{this.props.acceptMessage}</p> 
+                    </div>
+                    {this.props.submitted && !this.props.valid &&
+                        <p className="ml-4 text-red-500 text-xs italic whitespace-pre-wrap">* {this.props.errorText}</p>
+                    }
                     </>
                 );
             case 'looksLikeFile': 
                 return(
                     <>
-                        <label htmlFor={this.props.name} className='file-label' onClick={this.props.handleValue}>
-                            <div className={`input-wrapper ${this.props.className && this.props.className} ${this.props.size ? this.props.size : 'block'}`}>
+                        <label htmlFor={this.props.name} className='flex flex-row mt-4 ml-4 mr-4 mb-1' onClick={this.props.handleValue}>
+                            <div className="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline block">
                                 <p>{this.props.value}</p>
-                                <div className={`input-placeholder non-bold ${this.props.value.length > 0 && 'focused'}`}>
+                                <div className={`${this.props.value.length > 0 && 'font-bold'}`}>
                                     {this.props.label}
                                 </div>
                             </div>
-                            <div className='button secondary'>
+                            <div className='ml-4 inline-block font-bold py-2 px-4 rounded bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white border border-blue-500 hover:border-transparent'>
                                 <p className='text-smaller'>{this.props.buttonLabel}</p>
                             </div>
                         </label>
-                        {/*this.props.directory &&
-                            <input
-                                id={this.props.name}
-                                className='file-input'
-                                value={this.state.value}
-                                //onChange={this.props.handleValue}
-                                ref={this.props.innerRef}
-                                accept={this.props.accept}
-                                directory=''
-                                webkitdirectory=''
-                                multiple=''
-                            />
-                        */}
                     </>
                 );
             default:
                 return(
                     <>
-                        <div className={`input-wrapper ${this.props.className && this.props.className} ${this.props.size ? this.props.size : 'block'} ${this.props.submitted && (this.props.valid ? 'valid' : 'invalid')}`}>
-                            <input type={this.props.type} className='input' value={this.state.value} onChange={this.handleValue} ref={this.props.innerRef}/>
-                            <div className={`input-placeholder non-bold ${this.state.value.length > 0 && 'focused'}`}>
-                                {this.props.label}
-                            </div>
-                        </div>
-                        {this.props.submitted && !this.props.valid &&
-                            <p className='text-smallest light'>* {this.props.errorText}</p>
-                        }
+                    <div className="mt-4 ml-4 mr-4 mb-1">
+                        <label className={`block text-gray-700 text-sm mb-2 ${this.state.value.length > 0 && 'font-bold'}`}>
+                            {this.props.label}
+                        </label>
+                        <input className = {`${this.props.submitted && (this.props.valid ? 'border border-green-500' : 'border border-red-500')} shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`} 
+                        type={this.props.type} value={this.state.value} onChange={this.handleValue} ref={this.props.innerRef}/>
+                    </div>
+                    {this.props.submitted && !this.props.valid &&
+                        <p className="ml-4 text-red-500 text-xs italic">* {this.props.errorText}</p>
+                    }
                     </>
                 );
         }

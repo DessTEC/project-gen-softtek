@@ -21,11 +21,11 @@ class Button extends Component {
         return(
             <button 
                 type={this.props.type ? this.props.type : 'button'}
-                className={`button ${this.props.block && 'block'} ${this.props.variant === 'primary' ? 'primary' : 'secondary'} ${this.props.className && this.props.className}`}
+                className={`m-4 inline-block font-bold py-2 px-4 rounded ${this.props.variant === 'primary' ? 'bg-blue-500 hover:bg-blue-700 text-white ' : 'bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white border border-blue-500 hover:border-transparent'}`}
                 disabled={this.props.disabled}
                 onClick={this.props.onClick}
             >
-                <p className='text-smaller'><b>{this.props.label}</b></p>
+                <p><b>{this.props.label}</b></p>
             </button>
         );
     }

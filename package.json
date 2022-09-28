@@ -1,11 +1,15 @@
 {
-  "name": "softtek-desk-app",
+  "name": "project-gen",
   "version": "0.1.0",
   "main": "public/electron.js",
   "homepage": "./",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.1",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
@@ -17,7 +21,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-dropzone": "^11.3.2",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.1",
     "read-excel-file": "^5.1.0",
     "web-vitals": "^1.1.1"
   },
@@ -55,10 +59,13 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "autoprefixer": "^10.4.12",
     "concurrently": "^5.2.0",
     "electron": "^12.0.2",
     "electron-devtools-installer": "^3.1.1",
     "electron-rebuild": "^2.3.5",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8",
     "wait-on": "^5.3.0"
   },
   "config": {
